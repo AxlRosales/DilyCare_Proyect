@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo | Daily Care</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+    <link rel="shortcut icon" href="image/logo dailycare.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/catalogo.css">
+  <link rel="stylesheet" href="css/styles1.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <button class="burger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="index1.html" class="logo"><span class="dot"></span>Daily Care</a>
+
+      <ul class="nav-links">
+        <li><a href="index1.html#inicio">Inicio</a></li>
+        
+        <li><a href="index-catalogo.html" class="active">Catálogo</a></li>
+        <li><a href="index1.html#nosotros">Nosotros</a></li>
+        
+      </ul>
+<!--btn carrito sin normativas-->
+      <div id="cart-container">
+        <button class="cart-icon-btn" id="cart-icon-btn" aria-label="Carrito de compras">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="19" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+          </svg>
+        </button>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- Encabezado del catálogo -->
+  <section class="catalog-hero">
+    <div class="eyebrow"><span class="line"></span> NUESTROS PRODUCTOS</div>
+    <h1>Explora el catálogo</h1>
+    <p>Mascarillas, labiales hidratantes, lociones, cremas y desodorantes pensados para tu cuidado diario.</p>
+  </section>
+
+  <!-- Filtros de categoría -->
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="mascarillas">Mascarillas</button>
+    <button class="filter-btn" data-filter="labiales">Labiales</button>
+    <button class="filter-btn" data-filter="lociones">lociones</button>
+    <button class="filter-btn" data-filter="cremas">Cremas</button>
+    <button class="filter-btn" data-filter="desodorantes">Desodorantes</button>
+    <button class="filter-btn" data-filter="jabones">Jabones</button>
+  </div>
+
+  <!-- Grid de productos -->
+  <section class="catalog-grid" id="catalog-grid">
+
+    <!-- Mascarillas -->
+    <div class="product-card" data-category="mascarillas">
+      <div class="product-image ph-mascarilla"> <img src="image/snoppymacaria.jpg" alt="">
+      </div>
+      <div class="product-info">
+        <span class="product-tag">Peanuts x célavi</span>
+        <h3>Nourish Boost</h3>
+        <p class="product-desc">mascarilla de Snoppy/Peanuts de miel,lavanda y vitamina A .</p>
+        <div class="product-footer">
+          <span class="price">L. 62.00</span>
+          <button class="add-btn" data-name="Snoppy mascarilla" data-price="62.00"><svg viewBox="0 0 24 24" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="jabones">
+      <div class="product-image ph-jabones"> <img src="image/antioxidante.jpg" alt=""></div>
+      <div class="product-info">
+        <span class="product-tag">JABON</span>
+        <h3>Camelias anti-oxidante</h3>
+        <p class="product-desc">Contiene camelias y otros ingredientes para el skin care.</p>
+        <div class="product-footer">
+          <span class="price">L. 45.00</span>
+          <!--Carrito-->
+          <button class="add-btn" data-name="Camellias anti-oxidante" data-price="45.00"><svg viewBox="0 0 24 24" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Labiales -->
+    <div class="product-card" data-category="labiales">
+      <div class="product-image ph-labial"> <img src="image/purplelip.jpg" alt=""></div>
+      <div class="product-info">
+        <span class="product-tag">Labial Hidratante</span>
+        <h3>Moisture Nourishing</h3>
+        <p class="product-desc">Protege y suaviza labios resecos.</p>
+        <div class="product-footer">
+          <span class="price">L. 42.00</span>
+          <button class="add-btn" data-name="Moisturise Nourishing" data-price="42s.00"><svg viewBox="0 0 24 24" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg></button>
+          <!--
+           <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3">
+              <rect x="4" y="8" width="16" height="12" rx="3" />
+              <path d="M8 8V6a4 4 0 0 1 8 0v2" />
+            </svg>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="labiales">
+      <div class="product-image ph-labial2"><img src="image/lipsbalm.jpg" alt=""></div>
+      <div class="product-info">
+        <span class="product-tag">Labial Hidratante</span>
+        <h3>Lips Balm</h3>
+        <p class="product-desc">Labial no grasoso.</p>
+        <div class="product-footer">
+          <span class="price">L. 20.00</span>
+          <button class="add-btn" data-name="Lips Balm" data-price="20.00"><svg viewBox="0 0 24 24" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lociones -->
+    <div class="product-card" data-category="lociones">
+      <div class="product-image ph-lociones"><img src="image/locion.jpg" alt=""></div>
+      <div class="product-info">
+        <span class="product-tag">Lociones</span>
+        <h3>Cute animal: Seal Lion</h3>
+        <p class="product-desc">Toque de Rosa,Jasmine y Naranja.</p>
+        <div class="product-footer">
+          <span class="price">L. 86.00</span>
+          <button class="add-btn" data-name="Seal Lion" data-price="86.00"><svg viewBox="0 0 24 24" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="lociones">
+      <div class="product-image ph-lociones2"><img src="image/menlocion.jpg" alt=""></div>
+      <div class="product-info">
+        <span class="product-tag">Lociones</span>
+        <h3>Black Explorer</h3>
+        <p class="product-desc"> Con toque citrico, limon y coriander.</p>
+        <div class="product-footer">
+          <span class="price">L. 50.00</span>
+          <button class="add-btn" data-name="Black" data-price="50.00"><svg viewBox="0 0 24 24" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cremas -->
+    <div class="product-card" data-category="cremas">
+      <div class="product-image ph-crema"><img src="image/creammilk.jpg" alt=""></div>
+      <div class="product-info">
+        <span class="product-tag">Cremas</span>
+        <h3>Moisture Milk Hand Cream</h3>
+        <p class="product-desc">Crema hidrante coreana de arroz y leche.</p>
+        <div class="product-footer">
+          <span class="price">L. 90.00</span>
+          <button class="add-btn" data-name="Moisture Milk Hand Cream" data-price="90.00"><svg viewBox="0 0 24 24" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="mascarillas">
+      <div class="product-image ph-mascarilla"><img src="image/rosepetal.jpg" alt=""></div>
+      <div class="product-info">
+        <span class="product-tag">Mascarilla</span>
+        <h3>Rose Petal Mascarilla para los labios</h3>
+        <p class="product-desc">Mascarilla para labios con esencia de petalos de rosas.</p>
+        <div class="product-footer">
+          <span class="price">L. 10.00</span>
+          <button class="add-btn" data-name="Rose petal Mascarilla Para los labios" data-price="10.00"><svg viewBox="0 0 24 24" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desodorantes -->
+    <div class="product-card" data-category="desodorantes">
+      <div class="product-image ph-desodorante"><img src="image/deodorantmen.jpg" alt=""></div>
+      <div class="product-info">
+        <span class="product-tag">Desodorantes</span>
+        <h3>Desodorante Stick</h3>
+        <p class="product-desc">Protección  de 48 horas.</p>
+        <div class="product-footer">
+          <span class="price">L. 80.00</span>
+          <button class="add-btn" data-name="Desodorante Stick" data-price="80.00"><svg viewBox="0 0 24 24" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg> </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="jabones">
+      <div class="product-image ph-jabones2"><img src="image/Rose rejuvenation.jpg" alt=""></div>
+      <div class="product-info">
+        <span class="product-tag">JABON</span>
+        <h3>rose rejuvenation</h3>
+        <p class="product-desc">Contiene ácido hialurónico y colágeno .</p>
+        <div class="product-footer">
+          <span class="price">L. 62.00</span>
+          <button class="add-btn" data-name="Rose rejuvenation" data-price="62.00"><svg viewBox="0 0 24 24" fill="none"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg></button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="catalog-footer">
+    <p>© 2026 Daily Care. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- ================= MODAL: CARRITO ================= -->
+  <div class="cart-overlay" id="cart-overlay">
+    <div class="cart-modal">
+      <div class="cart-modal-head">
+        <h3>Tu carrito</h3>
+        <button class="cart-close" id="cart-close" aria-label="Cerrar carrito">&times;</button>
+      </div>
+
+      <div class="cart-empty" id="cart-empty">Tu carrito está vacío. ¡Agrega algún producto!</div>
+
+      <table class="cart-table" id="cart-table" style="display:none;">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cant.</th>
+            <th>Subtotal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="cart-table-body"></tbody>
+      </table>
+
+      <div class="cart-total-row" id="cart-total-row" style="display:none;">
+        <span>Total</span>
+        <span id="cart-total">$0.00</span>
+      </div>
+
+      <div class="cart-actions">
+        <button class="btn btn-ghost" id="cart-clear">Vaciar carrito</button>
+        <button class="btn btn-primary" id="cart-checkout">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: COMPRA CONFIRMADA ================= -->
+  <div class="cart-overlay" id="checkout-overlay">
+    <div class="cart-modal checkout-modal">
+      <div class="checkout-success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      </div>
+      <h3>¡Compra realizada!</h3>
+      <p class="checkout-order-id" id="checkout-order-id"></p>
+
+      <table class="cart-table" id="checkout-table"></table>
+
+      <div class="cart-total-row">
+        <span>Total pagado</span>
+        <span id="checkout-total">$0.00</span>
+      </div>
+
+      <p class="checkout-note">¡Gracias por su compra!</p>
+
+      <button class="btn btn-primary" id="checkout-close" style="width:100%;justify-content:center;">Volver a la tienda</button>
+    </div>
+  </div>
+
+  <script>
+
+    // ================= CARRITO DE COMPRAS =================
+
+    // "Base de datos" del carrito en memoria. Cada item: { name, price, qty }
+    let cart = [];
+
+    const cartBadge = document.getElementById('cart-badge');
+    const cartIconBtn = document.getElementById('cart-icon-btn');
+    const cartOverlay = document.getElementById('cart-overlay');
+    const cartClose = document.getElementById('cart-close');
+    const cartEmpty = document.getElementById('cart-empty');
+    const cartTable = document.getElementById('cart-table');
+    const cartTableBody = document.getElementById('cart-table-body');
+    const cartTotalRow = document.getElementById('cart-total-row');
+    const cartTotalEl = document.getElementById('cart-total');
+    const cartClearBtn = document.getElementById('cart-clear');
+    const cartCheckoutBtn = document.getElementById('cart-checkout');
+
+    const checkoutOverlay = document.getElementById('checkout-overlay');
+    const checkoutClose = document.getElementById('checkout-close');
+    const checkoutTable = document.getElementById('checkout-table');
+    const checkoutTotal = document.getElementById('checkout-total');
+    const checkoutOrderId = document.getElementById('checkout-order-id');
+
+    function formatPrice(n) {
+      return 'LPS. ' + n.toFixed(2);
+    }
+
+    // 1) Delegación de eventos: un solo listener en el documento
+    //    detecta el clic en CUALQUIER botón .add-btn, sin importar
+    //    en qué sección del HTML esté (lociones, cremas o jabones).
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.add-btn');
+      if (!btn) return; // el clic no fue en un botón de "agregar"
+
+      const name = btn.dataset.name;
+      const price = parseFloat(btn.dataset.price);
+
+      // ¿ya existe ese producto en el carrito? si sí, solo sube la cantidad
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+
+      updateCartBadge();
+      renderCartTable();
+
+      // pequeño feedback visual en el botón
+      btn.style.transform = 'scale(0.85)';
+      setTimeout(() => { btn.style.transform = ''; }, 150);
+    });
+
+    // 2) Actualiza el numerito del badge con el total de artículos
+    function updateCartBadge() {
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      cartBadge.textContent = totalItems;
+      cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+
+    // 3) Construye las filas de la tabla del carrito a partir del array `cart`
+    function renderCartTable() {
+      if (cart.length === 0) {
+        cartEmpty.style.display = 'block';
+        cartTable.style.display = 'none';
+        cartTotalRow.style.display = 'none';
+        return;
+      }
+
+      cartEmpty.style.display = 'none';
+      cartTable.style.display = 'table';
+      cartTotalRow.style.display = 'flex';
+
+      cartTableBody.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${formatPrice(item.price)}</td>
+          <td>
+            <div class="qty-control">
+              <button class="qty-btn" data-action="dec" data-index="${index}">−</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" data-action="inc" data-index="${index}">+</button>
+            </div>
+          </td>
+          <td>${formatPrice(subtotal)}</td>
+          <td><button class="qty-remove" data-action="remove" data-index="${index}" aria-label="Quitar">&times;</button></td>
+        `;
+        cartTableBody.appendChild(row);
+      });
+
+      cartTotalEl.textContent = formatPrice(total);
+    }
+
+    // 4) Delegación de eventos dentro de la tabla: +, -, quitar
+    cartTableBody.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-action]');
+      if (!btn) return;
+
+      const index = parseInt(btn.dataset.index);
+      const action = btn.dataset.action;
+
+      if (action === 'inc') {
+        cart[index].qty += 1;
+      } else if (action === 'dec') {
+        cart[index].qty -= 1;
+        if (cart[index].qty <= 0) cart.splice(index, 1);
+      } else if (action === 'remove') {
+        cart.splice(index, 1);
+      }
+
+      updateCartBadge();
+      renderCartTable();
+    });
+
+    // 5) Abrir / cerrar el modal del carrito
+    cartIconBtn.addEventListener('click', () => {
+      renderCartTable();
+      cartOverlay.classList.add('open');
+    });
+    cartClose.addEventListener('click', () => cartOverlay.classList.remove('open'));
+    cartOverlay.addEventListener('click', (e) => {
+      if (e.target === cartOverlay) cartOverlay.classList.remove('open');
+    });
+
+    // 6) Vaciar carrito
+    cartClearBtn.addEventListener('click', () => {
+      cart = [];
+      updateCartBadge();
+      renderCartTable();
+    });
+
+    // 7) "Finalizar compra" — simula el checkout, sin conectar a nada real
+    cartCheckoutBtn.addEventListener('click', () => {
+      if (cart.length === 0) return;
+
+      let total = 0;
+      checkoutTable.innerHTML = '<tbody></tbody>';
+      const tbody = checkoutTable.querySelector('tbody');
+
+      cart.forEach(item => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name} × ${item.qty}</td>
+          <td style="text-align:right;">${formatPrice(subtotal)}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      checkoutTotal.textContent = formatPrice(total);
+      // número de orden falso, solo para que se vea real
+      const fakeOrderId = 'DC-' + Math.floor(100000 + Math.random() * 900000);
+      checkoutOrderId.textContent = 'Orden #' + fakeOrderId;
+
+      // vacía el carrito real y cierra el modal de carrito
+      cart = [];
+      updateCartBadge();
+      cartOverlay.classList.remove('open');
+
+      // muestra la confirmación
+      checkoutOverlay.classList.add('open');
+    });
+
+    checkoutClose.addEventListener('click', () => checkoutOverlay.classList.remove('open'));
+    checkoutOverlay.addEventListener('click', (e) => {
+      if (e.target === checkoutOverlay) checkoutOverlay.classList.remove('open');
+    });
+
+    // estado inicial
+    updateCartBadge();
+
+    // Filtro de categorías
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.product-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Menú hamburguesa son las tres lineas (mismo comportamiento que index1.html)
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    burger.addEventListener('click', () => {
+      const isOpen = navLinks.style.display === 'flex';
+      navLinks.style.display = isOpen ? 'none' : 'flex';
+      navLinks.style.cssText += isOpen ? '' : 'position:absolute;top:100%;left:0;right:0;background:#F4FAFF;flex-direction:column;padding:24px 32px;gap:20px;border-bottom:1px solid #C7DFEF;';
+    });
+
+  </script>
+  
+</body>
+
+</html>

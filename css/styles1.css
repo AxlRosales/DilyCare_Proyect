@@ -77,9 +77,19 @@
     padding:20px 32px;
     max-width:1180px;margin:0 auto;
   }
+  
   .logo{
-    display:flex;align-items:center;gap:10px;
-    font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--navy);
+    display:flex;align-items:center;gap:10px;*/
+    font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var*(--navy);
+   
+  }
+
+  .logo-img{
+    height: 75px;
+    width: 55px;
+    display: block;
+    /*display:flex;align-items:center;gap:10px;*/
+    /*font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--navy);*/
   }
   .logo .dot{
     width:9px;height:9px;border-radius:50%;
@@ -132,9 +142,11 @@
     overflow:hidden;
   }
   .hero-inner{
-    display:grid;grid-template-columns:1.05fr 0.95fr;
+    display:grid;grid-template-columns:1fr ;
+    justify-items: center;
     gap:40px;align-items:center;
     max-width:1180px;margin:0 auto;padding:0 32px;
+    text-align:center;
   }
   .hero h1{
     font-size:clamp(40px,5.6vw,68px);
@@ -458,3 +470,5 @@
     .newsletter{padding:44px 28px;margin:0 16px 90px;}
     .hero-ctas{flex-direction:column;align-items:flex-start;}
   }
+
+ 
