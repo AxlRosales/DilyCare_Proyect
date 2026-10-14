@@ -80,16 +80,16 @@
   
   .logo{
     display:flex;align-items:center;gap:10px;*/
-    font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var*(--navy);
+    font-family:'Fraunces',serif;font-size:20px;font-weight:50;color:var*(--navy);
    
   }
 
   .logo-img{
-    height: 75px;
+    height: 55px;
     width: 55px;
     display: block;
     /*display:flex;align-items:center;gap:10px;*/
-    /*font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--navy);*/
+    /*font-family:'Fraunces',serif;font-size:500px;font-weight:500;color:var(--navy);*/
   }
   .logo .dot{
     width:9px;height:9px;border-radius:50%;

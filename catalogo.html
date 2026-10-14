@@ -19,11 +19,12 @@
         <span></span><span></span><span></span>
       </button>
 
-      <a href="index1.html" class="logo"><span class="dot"></span>Daily Care</a>
+    
+    <div class="logo"><img src="image/logo dailycare.png" alt="dailycare" class="logo-img">dailycare</div>
+     
 
       <ul class="nav-links">
         <li><a href="index1.html#inicio">Inicio</a></li>
-        
         <li><a href="index-catalogo.html" class="active">Catálogo</a></li>
         <li><a href="index1.html#nosotros">Nosotros</a></li>
         
@@ -278,6 +279,92 @@
     </div>
   </div>
 
+  <!-- =================Modal : Metodo de pago ====================== -->
+   <div class="cart-overlay" id="payment-overlay">
+    <div class="cart-modal payment-modal">
+      <div class="cart-modal-head">
+        <h3>Método de pago</h3>
+        <button class="cart-close" id="payment-close" aria-label="Cerrar pago">&times;</button>
+      </div>
+      <div class=" payment-preview" id="paymentPreview">
+        <div class="payment-preview-top">
+          <div class="payment-chip"></div>
+          <div class="payment-brand" id="paymentBrand"></div>
+        </div>
+
+        <div class="payment-number" id="paymentNumberDisplay">**** **** **** ****</div>
+        <div class="payment-preview-bottom">
+          <span id="paymentNameDisplay">Nombre Apellido </span>
+          <span id="paymentExpDisplay">MM/AA</span>
+        </div>
+      </div>
+
+      <div class="payment-picker" id="paymentPicker">
+        <label class="payment-option" data-type="bac">
+          <input type="radio" name="paymentCardType" value="bac">
+          <span class="payment-check">&check;</span>
+          <span class="payment-logo">
+          <svg viewBox="0 0 36 16 " xmlns="http://www.w3.org/2000/svg">
+         <text x = "0" y="13" font-family="arial,sans-serif" font-weight="800" font-size="15" fill="#D71920">BAC</text>
+          </svg>
+          </span>
+          <span class="payment-option-label">BAC</span>
+        </label>
+
+        <label class="payment-option" data-type="ficohsa">
+          <input type="radio"name="paymentCardType" value="ficohsa">
+          <span class="payment-check">&check;</span>
+          <span class="payment-logo">
+            <svg viewBox="0 0 60 16" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="13" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="#0B4EA2">ficohsa</text>
+            </svg>
+          </span>
+          <span class="payment-option-label">Ficohsa</span>
+        </label>
+
+        <label class="payment-option" data-type="amex">
+          <input type="radio" name="paymentCardType" value="amex">
+          <span class="payment-check">&check;</span>
+          <span class="payment-logo">
+            <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="13" font-family="arial,sans-serif" font-weight="800" font-size="12" fill="#0A6ADD">AMEX</text>
+            </svg>
+          </span>
+          <span class="payment-option-label">AMEX</span>
+        </label>
+      </div>
+
+      <form id="payment-form" class="payment-form">
+        <div class="payment-field">
+          <label for="payNumber">Número de tarjeta</label>
+          <input id="payNumber" type="text" inputmode="numeric" placeholder="0000 0000 0000 0000 " maxlength="19">
+        </div>
+
+        <div class="payment-field">
+          <label for="payName">Nombre en la tarjeta</label>
+          <input id="payName" type="text" placeholder="como aparece en la tarjeta">
+        </div>
+
+        <div class="payment-row">
+          <div class="payment-field">
+            <label for="payExp">Vencimiento</label>
+            <input id="payExp" type="text" placeholder="MM/AA" maxlength="5">
+          </div>
+          <div class="payment-fiel">
+            <label for="payCvv">CVV</label>
+            <input id="payCvv" type="text"inputmode="numeric" placeholder="123" maxlength="4">
+          </div>
+        </div>
+
+        <div class="cart-total-row payment-total-row">
+          <span>Total a pagar</span>
+          <span id="paymentTotalEl">LPS.0.00</span>
+        </div>
+        <button type="submit" class="btn btn-primary payment-sumit" id="paymentSubmitBtn" disabled>Selecciona un tipo de Tarjeta </button>
+      </form>
+    </div>
+   </div>
+
   <!-- ================= MODAL: COMPRA CONFIRMADA ================= -->
   <div class="cart-overlay" id="checkout-overlay">
     <div class="cart-modal checkout-modal">
@@ -443,37 +530,142 @@
     });
 
     // 7) "Finalizar compra" — simula el checkout, sin conectar a nada real
+        // 7) "Finalizar compra" — abre el modal de pago; la orden queda pendiente en pendingOrder
+    let pendingOrder = null;
+
     cartCheckoutBtn.addEventListener('click', () => {
       if (cart.length === 0) return;
 
       let total = 0;
+      const rows = cart.map(item => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+        return { name: item.name, qty: item.qty, subtotal };
+      });
+
+      pendingOrder = { rows, total };
+      paymentTotalEl.textContent = formatPrice(total);
+
+      cartOverlay.classList.remove('open');
+      paymentOverlay.classList.add('open');
+    });
+
+    // ================= MODAL: MÉTODO DE PAGO =================
+
+    const paymentOverlay = document.getElementById('payment-overlay');
+    const paymentClose = document.getElementById('payment-close');
+    const paymentOptions = document.querySelectorAll('.payment-option');
+    const paymentPreview = document.getElementById('paymentPreview');
+    const paymentBrand = document.getElementById('paymentBrand');
+    const paymentNumberDisplay = document.getElementById('paymentNumberDisplay');
+    const paymentNameDisplay = document.getElementById('paymentNameDisplay');
+    const paymentExpDisplay = document.getElementById('paymentExpDisplay');
+    const paymentForm = document.getElementById('payment-form');
+    const paymentSubmitBtn = document.getElementById('paymentSubmitBtn');
+    const paymentTotalEl = document.getElementById('paymentTotalEl');
+
+    const paymentCards = {
+      bac: {
+        label: 'BAC',
+        mark: '<svg viewBox="0 0 36 16" xmlns="http://www.w3.org/2000/svg"><text x="0" y="13" font-family="Arial, sans-serif" font-weight="800" font-size="15" fill="#fff">BAC</text></svg>'
+      },
+      ficohsa: {
+        label: 'Ficohsa',
+        mark: '<svg viewBox="0 0 60 16" xmlns="http://www.w3.org/2000/svg"><text x="0" y="13" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="#fff">ficohsa</text></svg>'
+      },
+      amex: {
+        label: 'Amex',
+        mark: '<svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg"><text x="0" y="13" font-family="Arial, sans-serif" font-weight="800" font-size="12" fill="#fff">AMEX</text></svg>'
+      }
+    };
+
+    let selectedPaymentType = null;
+
+    paymentOptions.forEach(opt => {
+      const input = opt.querySelector('input');
+      opt.addEventListener('click', () => {
+        input.checked = true;
+        selectedPaymentType = opt.dataset.type;
+        const card = paymentCards[selectedPaymentType];
+
+        paymentOptions.forEach(o => o.classList.toggle('selected', o === opt));
+        paymentPreview.className = 'payment-preview ' + selectedPaymentType;
+        paymentBrand.innerHTML = card.mark;
+
+        paymentSubmitBtn.disabled = false;
+        paymentSubmitBtn.textContent = 'Pagar con ' + card.label;
+      });
+    });
+
+    document.getElementById('payNumber').addEventListener('input', (e) => {
+      const digits = e.target.value.replace(/\D/g, '').slice(0, 16);
+      e.target.value = (digits.match(/.{1,4}/g) || []).join(' ');
+      paymentNumberDisplay.textContent = digits.length
+        ? digits.padEnd(16, '•').match(/.{1,4}/g).join(' ')
+        : '•••• •••• •••• ••••';
+    });
+
+    document.getElementById('payName').addEventListener('input', (e) => {
+      paymentNameDisplay.textContent = e.target.value.trim() ? e.target.value.toUpperCase() : 'NOMBRE APELLIDO';
+    });
+
+    document.getElementById('payExp').addEventListener('input', (e) => {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 4);
+      if (v.length >= 3) v = v.slice(0, 2) + '/' + v.slice(2);
+      e.target.value = v;
+      paymentExpDisplay.textContent = v || 'MM/AA';
+    });
+
+    function resetPaymentModal() {
+      paymentForm.reset();
+      selectedPaymentType = null;
+      paymentOptions.forEach(o => o.classList.remove('selected'));
+      paymentPreview.className = 'payment-preview';
+      paymentBrand.innerHTML = '';
+      paymentNumberDisplay.textContent = '•••• •••• •••• ••••';
+      paymentNameDisplay.textContent = 'NOMBRE APELLIDO';
+      paymentExpDisplay.textContent = 'MM/AA';
+      paymentSubmitBtn.disabled = true;
+      paymentSubmitBtn.textContent = 'Selecciona un tipo de tarjeta';
+    }
+
+    paymentClose.addEventListener('click', () => paymentOverlay.classList.remove('open'));
+    paymentOverlay.addEventListener('click', (e) => {
+      if (e.target === paymentOverlay) paymentOverlay.classList.remove('open');
+    });
+
+    paymentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!selectedPaymentType || !pendingOrder) return;
+
       checkoutTable.innerHTML = '<tbody></tbody>';
       const tbody = checkoutTable.querySelector('tbody');
 
-      cart.forEach(item => {
-        const subtotal = item.price * item.qty;
-        total += subtotal;
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${item.name} × ${item.qty}</td>
-          <td style="text-align:right;">${formatPrice(subtotal)}</td>
+      pendingOrder.rows.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${row.name} × ${row.qty}</td>
+          <td style="text-align:right;">${formatPrice(row.subtotal)}</td>
         `;
-        tbody.appendChild(row);
+        tbody.appendChild(tr);
       });
 
-      checkoutTotal.textContent = formatPrice(total);
-      // número de orden falso, solo para que se vea real
+      checkoutTotal.textContent = formatPrice(pendingOrder.total);
       const fakeOrderId = 'DC-' + Math.floor(100000 + Math.random() * 900000);
       checkoutOrderId.textContent = 'Orden #' + fakeOrderId;
 
-      // vacía el carrito real y cierra el modal de carrito
       cart = [];
+      pendingOrder = null;
       updateCartBadge();
-      cartOverlay.classList.remove('open');
+
+      paymentOverlay.classList.remove('open');
+      resetPaymentModal();
+      checkoutOverlay.classList.add('open');
+    });
 
       // muestra la confirmación
       checkoutOverlay.classList.add('open');
-    });
+    ;
 
     checkoutClose.addEventListener('click', () => checkoutOverlay.classList.remove('open'));
     checkoutOverlay.addEventListener('click', (e) => {

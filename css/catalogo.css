@@ -47,30 +47,28 @@ header {
 }
 
 nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 32px;
+     display:flex;align-items:center;justify-content:space-between;
+    padding:20px 32px;
+    max-width:1180px;margin:0 auto;
+
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--navy);
+      display:flex;align-items:center;gap:10px;*/
+    font-family:'Fraunces',serif;font-size:20px;font-weight:50;color:var*(--navy);
+
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--blue-mid);
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0 0 4px rgba(74, 144, 217, 0.6);
+.logo-img{
+  height: 55px;
+  width: 55px;
+  display: block;
+
+}
+.logo.dot {
+    width:9px;height:9px;border-radius:50%;
+    background:var(--sky);
+    box-shadow:0 0 0 5px var(--pale);
 }
 
 .nav-links {
@@ -355,3 +353,61 @@ nav {
   object-fit: cover;
   display: block;
 }
+
+  /* ---------- PAGO (método de pago con tarjeta) ---------- */
+  .payment-preview{
+    height:150px;border-radius:16px;padding:18px;margin-bottom:18px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    color:var(--white);background:linear-gradient(135deg,var(--deep),var(--navy));
+    transition:background .35s ease;
+  }
+  .payment-preview.bac{background:linear-gradient(135deg,#D71920,#8E0F14);}
+  .payment-preview.ficohsa{background:linear-gradient(135deg,#1e3550,#509aeb);}
+  .payment-preview.amex{background:linear-gradient(135deg,#7c7e1e,#b19053);}
+  .payment-preview-top{display:flex;justify-content:space-between;align-items:flex-start;}
+  .payment-chip{width:34px;height:24px;border-radius:5px;background:linear-gradient(135deg,#E8D9A8,#C9AE6C);opacity:.9;}
+  .payment-brand{height:22px;display:flex;align-items:center;}
+  .payment-brand svg{height:100%;width:auto;}
+  .payment-number{
+    font-family:'Space Mono',monospace;font-size:16px;letter-spacing:.1em;
+    color:rgba(255,255,255,.92);
+  }
+  .payment-preview-bottom{
+    display:flex;justify-content:space-between;
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.03em;
+    text-transform:uppercase;color:rgba(255,255,255,.75);
+  }
+
+  .payment-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
+  .payment-option{
+    position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;
+    padding:12px 8px 10px;background:var(--white);border:1px solid var(--line);border-radius:12px;
+    cursor:pointer;transition:border-color .2s ease,background .2s ease,transform .15s ease;
+  }
+  .payment-option:hover{background:var(--ice);transform:translateY(-2px);}
+  .payment-option input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer;}
+  .payment-logo{height:18px;display:flex;align-items:center;}
+  .payment-logo svg{height:100%;width:auto;}
+  .payment-option-label{font-size:11px;color:var(--muted);}
+  .payment-option.selected{border-color:var(--navy);background:var(--ice);}
+  .payment-option.selected .payment-option-label{color:var(--navy);}
+  .payment-check{
+    position:absolute;top:6px;right:6px;width:14px;height:14px;border-radius:50%;
+    background:var(--navy);color:var(--white);font-size:9px;line-height:14px;text-align:center;
+    display:none;
+  }
+  .payment-option.selected .payment-check{display:block;}
+
+  .payment-form{display:flex;flex-direction:column;gap:12px;}
+  .payment-field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;}
+  .payment-field input{
+    width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;
+    font-family:'Space Mono',monospace;font-size:14px;color:var(--navy);background:var(--white);
+    outline:none;transition:border-color .15s ease;
+  }
+  .payment-field input:focus{border-color:var(--primary);}
+  .payment-row{display:flex;gap:12px;}
+  .payment-row .payment-field{flex:1;}
+  .payment-total-row{margin-bottom:6px;}
+  .payment-submit{width:100%;justify-content:center;}
+  .payment-submit:disabled{opacity:.5;cursor:not-allowed;}
